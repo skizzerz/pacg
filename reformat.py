@@ -111,7 +111,7 @@ for loc in abyssal:
 # This way players can easily see how many cards in the blessings deck are left even if it's been a while between updates
 if args.players:
     # sometimes the blessings deck numbering starts at 0 instead of 1, account for that
-    if cont.find("Turn 0 ??"):
+    if cont.find("Turn 0 ??") != -1:
         # Blessing 0 found, subtract 1 from our turn numbering since we're zero-based
         zerofix = 1
     else:
