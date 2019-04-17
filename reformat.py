@@ -87,6 +87,9 @@ cont = re.sub(r"\n+Blessings Deck Card 1", r"\nBlessings Deck Card 1", cont, fla
 # collapse space between location block and location deck
 cont = re.sub(r"\[b\]Located/Displayed Here:\[/b\] (.*)\n+\[", r"[b]Located/Displayed Here:[/b] \1\n[", cont, flags=re.MULTILINE)
 
+# collapse space between opening spoiler and card name
+cont = re.sub(r"Card ([0-9]+)\]\s*\[b\]", r"Card \1][b]", cont, flags=re.MULTILINE)
+
 # ensure adequate space between locations
 cont = re.sub(r"\]\n*\[b\]((?!Closed\[).*?)\[/b\]\n(\[b\]Closed\[/b\]\n)?(\[i\]Traits:\[/i\].*?\n)?\[i\]At This Location", r"]\n\n[b]\1[/b]\n\2\3[i]At This Location", cont, flags=re.MULTILINE)
 cont = re.sub(r"(\[b\]Located/Displayed Here:\[/b\] .*?)\n*\[b\]((?!Closed\[).*?)\[/b\]\n(\[b\]Closed\[/b\]\n)?(\[i\]Traits:\[/i\].*?\n)?\[i\]At This Location", r"\1\n\n[b]\2[/b]\n\3\4[i]At This Location", cont, flags=re.MULTILINE)
