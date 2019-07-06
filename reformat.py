@@ -56,7 +56,7 @@ cont = re.sub("Combat 0", "Combat See Below", cont, flags=re.MULTILINE)
 cont = re.sub("See below", "See Below", cont, flags=re.MULTILINE)
 
 # put set indicator on same line as card type
-cont = re.sub(r"\[/b\]\n([^\n]+)\n(Loot|Henchman|Villain|Monster|Barrier|Weapon|Spell|Armor|Item|Ally|Blessing)", r"[/b]\n\1 \2", cont, flags=re.MULTILINE)
+cont = re.sub(r"\[/b\]\n([^\n]+)\n(Loot|Henchman|Villain|Monster|Barrier|Weapon|Spell|Armor|Item|Ally|Blessing|Story)", r"[/b]\n\1 \2", cont, flags=re.MULTILINE)
 
 # collapse traits
 for i in range(1, 10):
