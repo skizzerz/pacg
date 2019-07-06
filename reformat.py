@@ -55,6 +55,9 @@ cont = re.sub("None 0", "None", cont, flags=re.MULTILINE)
 cont = re.sub("Combat 0", "Combat See Below", cont, flags=re.MULTILINE)
 cont = re.sub("See below", "See Below", cont, flags=re.MULTILINE)
 
+# put set indicator on same line as card type
+cont = re.sub(r"\[/b\]\n([^\n]+)\n(Loot|Henchman|Villain|Monster|Barrier|Weapon|Spell|Armor|Item|Ally|Blessing)", r"[/b]\n\1 \2", cont, flags=re.MULTILINE)
+
 # collapse traits
 for i in range(1, 10):
     frag = r"([^\[\n]+)\n" * i
@@ -79,7 +82,7 @@ for i in range(9, 0, -1):
     cont = re.sub("To Defeat:\n" + frag, repl + "\n", cont, flags=re.MULTILINE)
 
 # fix blessings deck (note, turn order must be injected manually for now)
-cont = re.sub(r"\[spoiler\]\[b\]Blessings Deck Card ([0-9]+)(?:\s*/\s*)?\[/b\]\n", r"\n\nBlessings Deck Card \1 - Turn \1 ??\n[spoiler]", cont, flags=re.MULTILINE)
+cont = re.sub(r"\[spoiler\](?:Blessings Deck Card [0-9]+ )?\[b\]Blessings Deck Card ([0-9]+)[^[]*?\[/b\]\n", r"\n\nBlessings Deck Card \1 - Turn \1 ??\n[spoiler]", cont, flags=re.MULTILINE)
 
 # collapse 1st blessing
 cont = re.sub(r"\n+Blessings Deck Card 1", r"\nBlessings Deck Card 1", cont, flags=re.MULTILINE)
